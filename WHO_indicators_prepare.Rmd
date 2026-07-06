@@ -1,0 +1,18 @@
+```{r, warning=FALSE, message=FALSE}
+library("vtree")
+library("dplyr")
+```
+
+# Source
+
+https://www.who.int/data/gho
+
+# License
+
+https://www.who.int/about/policies/publishing/data-policy/terms-and-conditions
+
+```{r}
+d <- read.csv("WHO_indicators.csv")
+```
+
+

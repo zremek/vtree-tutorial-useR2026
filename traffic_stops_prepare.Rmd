@@ -1,0 +1,26 @@
+```{r, message=FALSE, warning=FALSE}
+library(vtree)
+library(dplyr)
+```
+
+# Source
+
+https://data.ottawapolice.ca/datasets/76a54b7f7ef44ab1b78dd96f3061c7cb_0
+
+# License
+
+https://data.ottawapolice.ca/pages/open-data-licence
+
+
+```{r}
+data <- read.csv("traffic_stops.csv")
+
+traffic_stops <- data |>
+  rename(race = Driver.Race, age = Driver.Age, gender = Driver.Gender, 
+    city = Driver.City, province = Driver.Province,
+    how_cleared = How.Cleared, date = Occurred.Date, year = Occurred.Year,
+    hour = Occurred.Hour, day = Day.of.Week) |>
+  select(-Occurrence.Number, -x_coordinate, -y_coordinate, -x, -y, -OBJECTID, -Location, -Neighbourhood, -date) |>
+  filter(!is.na(race) & age != "" & gender != "") |>
+  filter(gender != "D", age != "-15")
+```

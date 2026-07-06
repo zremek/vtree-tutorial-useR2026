@@ -1,0 +1,77 @@
+```{r, warning=FALSE, message=FALSE}
+library("vtree")
+library("dplyr")
+```
+
+# Source
+
+https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup/data
+
+# License
+
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+```{r}
+fifa <- read.csv("matches_1930_2022.csv")
+fifa <- fifa |> 
+  mutate(
+    HOME_OWN_GOAL = home_own_goal != "",
+    AWAY_OWN_GOAL = away_own_goal != "",
+    total_own_goals = HOME_OWN_GOAL + AWAY_OWN_GOAL,
+    game = paste(home_team,"v",away_team,Year)
+  )
+```
+
+home_team, away_team - Home and Away Teams,
+
+home_score, away_score - Scores,
+
+home_xg, away_xg - XG,
+
+home_penalty, away_penalty- Penalties,
+
+home_manager, away_manager - Managers,
+
+home_captain, away_captain - Captains,
+
+home_goal, away_goal - Scorers (Game),
+
+home_goal_long, away_goal_long - Scorers (+Assistant),
+
+home_own_goal, away_own_goal - Own Goal Scorers (OG),
+
+home_penalty_goal, away_penalty_goal - Scorers (Penalty),
+
+home_penalty_miss_long, away_penalty_miss_long - Miss Penalty (+Miss Reason),
+
+home_penalty_shootout_miss_long, away_penalty_shootout_miss_long - Miss Penalty(After Game),
+
+home_penalty_shootout_goal_long, away_penalty_shootout_goal_long- Penalty (After Game),
+
+home_red_card, away_red_card - Red Cards (Direct),
+
+home_yellow_red_card, away_yellow_red_card - Red Cards (Second Yellow),
+
+home_yellow_card_long, away_yellow_card_long - Yellow Cards,
+
+home_substitute_in_long, away_substitute_in_long - Substitutions,
+
+Attendance,
+
+Venue,
+
+Officials,
+
+Round,
+
+Date,
+
+Score,
+
+Referee,
+
+Notes,
+
+Host,
+
+Year, 
