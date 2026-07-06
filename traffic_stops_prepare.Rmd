@@ -24,3 +24,49 @@ traffic_stops <- data |>
   filter(!is.na(race) & age != "" & gender != "") |>
   filter(gender != "D", age != "-15")
 ```
+
+Each row of the data represents a traffic stop. 
+
+"Final" category means that police stoped the car and let it go. 
+
+```{r}
+vtree(traffic_stops, "how_cleared", horiz = F)
+```
+
+```{r}
+vtree(traffic_stops, "race how_cleared", horiz = T)
+
+```
+
+Shiny version is accessed with svtree()
+
+```{r}
+svtree(traffic_stops, "race how_cleared", horiz = F)
+
+```
+
+parameter race=White is dychotomizing race in White/non-White 
+
+
+```{r}
+svtree(traffic_stops, "race=White how_cleared", horiz = F)
+
+```
+```{r}
+svtree(traffic_stops, "age race=White how_cleared=Final", horiz = T)
+
+```
+
+
+```{r}
+vtree(traffic_stops, "race=White age", 
+      summary = "how_cleared=Final %leafonly%", 
+      splitwidth = Inf)
+```
+
+
+
+
+
+
+

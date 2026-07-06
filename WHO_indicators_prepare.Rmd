@@ -16,3 +16,30 @@ d <- read.csv("WHO_indicators.csv")
 ```
 
 
+Country is an unit of analysis in that data set. 
+Tob, PA, Alc, Diab are vars indicating if a policy on a disease exists in the country. 
+
+```{r}
+dd <- d |> 
+  mutate(Tob = 1 * (Tob == "Yes"), 
+         PA = 1 * (PA == "Yes"),
+         Alc = 1 * (Alc == "Yes"), 
+         Diab = 1 * (Diab == "Yes"))
+
+UpSetR::upset(dd, order.by = "freq")
+```
+
+
+```{r}
+vtree(dd, "Tob PA Alc Diab", pattern = T)
+```
+
+
+For quantifying intersections Jaccard index can be used. 
+
+https://en.wikipedia.org/wiki/Jaccard_index
+
+
+
+
+

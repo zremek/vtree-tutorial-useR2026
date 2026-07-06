@@ -5,11 +5,11 @@ library("dplyr")
 
 # Source
 
-https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup/data
+<https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup/data>
 
 # License
 
-https://creativecommons.org/licenses/by-nc-sa/4.0/
+<https://creativecommons.org/licenses/by-nc-sa/4.0/>
 
 ```{r}
 fifa <- read.csv("matches_1930_2022.csv")
@@ -74,4 +74,35 @@ Notes,
 
 Host,
 
-Year, 
+Year,
+
+
+```{r}
+vtree(fifa, "HOME_OWN_GOAL AWAY_OWN_GOAL")
+```
+
+
+```{r}
+vtree(fifa, "HOME_OWN_GOAL AWAY_OWN_GOAL", pattern = T)
+
+```
+
+
+What that one game was? 
+
+```{r}
+vtree(fifa, "HOME_OWN_GOAL AWAY_OWN_GOAL", 
+      summary = "game \n%list%%var=AWAY_OWN_GOAL%%node=TRUE%")
+```
+
+
+
+
+
+
+
+
+
+
+
+
